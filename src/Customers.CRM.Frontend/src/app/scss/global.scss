@@ -1,0 +1,70 @@
+.page-layout.carded.fullwidth.point-of-sale {
+    > .center {
+        .content-card {
+            display: flex;
+            flex-direction: row;
+            padding: 15px !important;
+        }
+    }
+}
+
+.custom-table {
+    height: 100%;
+    width: 100%;
+    padding-right: 12px; // place for table scroll
+
+    .table-header-row, .table-data-row {
+        border-bottom: 1px solid #E0E0E0;
+
+        .table-header-cell, .table-data-cell {
+            border: 0;
+        }
+
+        th.mat-header-cell:first-of-type, td.mat-cell:first-of-type {
+            padding-left: 12px;
+        }
+
+        th.mat-header-cell:last-of-type, td.mat-cell:last-of-type {
+            padding: 0;
+        }
+    }
+}
+
+.form-control {
+    font-size: 12px;
+}
+
+.mat-form-field-disabled, [disabled] {
+    color: #dddddd;
+    cursor: not-allowed;
+}
+
+.success-snack-bar-panel {
+    background-color: #33D374 !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.error-snack-bar-panel {
+    background-color: #D63333 !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.tooltip-error-state {
+    background: #b71c1c !important;
+}
+
+// pagination restyling
+.mat-paginator {
+    .mat-paginator-container {
+        min-height: 40px;
+    }
+
+    .mat-paginator-page-size {
+        .mat-paginator-page-size-select {
+            font-size: 5px;
+            margin-top: 0;
+        }
+    }
+}

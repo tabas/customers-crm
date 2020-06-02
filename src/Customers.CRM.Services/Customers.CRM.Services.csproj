@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Customers.CRM.DataAccess.Abstraction\Customers.CRM.DataAccess.Abstraction.csproj" />
+    <ProjectReference Include="..\Customers.CRM.Domain\Customers.CRM.Domain.csproj" />
+    <ProjectReference Include="..\Customers.CRM.Services.Abstraction\Customers.CRM.Services.Abstraction.csproj" />
+  </ItemGroup>
+
+</Project>

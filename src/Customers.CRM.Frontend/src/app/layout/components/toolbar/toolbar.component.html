@@ -1,0 +1,20 @@
+<mat-toolbar class="p-0 mat-elevation-z1">
+    <div fxFlex fxFill fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
+            <button
+                mat-icon-button
+                class="navbar-toggle-button"
+                *ngIf="!hiddenNavbar && !rightNavbar"
+                (click)="toggleSidebarOpen('navbar')"
+                fxHide.gt-md>
+                <mat-icon class="secondary-text">menu</mat-icon>
+            </button>
+            <div class="toolbar-separator" *ngIf="!hiddenNavbar && !rightNavbar" fxHide.gt-md></div>
+            <div fxLayout="row" fxLayoutAlign="start center" *ngIf="horizontalNavbar">
+                <div class="logo ml-16">
+                    <img class="logo-icon" src="assets/images/logos/logo-sm.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-toolbar>

@@ -1,0 +1,8 @@
+<h1 matDialogTitle>Update Customer</h1>
+<div mat-dialog-content class="edit-customer-dialog-container">
+    <app-customer-form
+        [dmsCustomer]="data.customer"
+        [dmsPrimaryButtonLabel]="data.primaryButtonLabel"
+        (dmsOnPrimaryAction)="onCustomerDetailsUpdate($event)">
+    </app-customer-form>
+</div>

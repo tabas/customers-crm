@@ -1,0 +1,88 @@
+<div id="customers" class="customers-page page-layout carded fullwidth inner-scroll">
+    <div class="center">
+        <div class="content-card">
+            <div class="content">
+                <h1>Customers</h1>
+                <div class="row-container" fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-form-field fxFlex="20" appearance="outline" class="full-width form-control">
+                        <span matPrefix><mat-icon>search</mat-icon></span>
+                        <mat-label>Search...</mat-label>
+                        <input matInput autocomplete="off" placeholder="Search" (input)="searchCustomers($event.target['value'])">
+                    </mat-form-field>
+
+                    <button type="button" class="new-customer-button" mat-raised-button (click)="openNewCustomerModalWindow()">
+                        <mat-icon>playlist_add</mat-icon>
+                        New
+                    </button>
+                </div>
+
+                <mat-table
+                        [hidden]="!customers.length"
+                        [dataSource]="dataSource"
+                    class="customers-table custom-table"
+                    fusePerfectScrollbar
+                    matSort>
+                    <ng-container matColumnDef="id">
+                        <th class="table-header-cell" fxFlex="5" *matHeaderCellDef mat-header-cell mat-sort-header>
+                            <strong>#</strong>
+                        </th>
+                        <td class="table-data-cell" fxFlex="5" *matCellDef="let element" mat-cell>{{element.id}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="name">
+                        <th class="table-header-cell" fxFlex="20" *matHeaderCellDef mat-header-cell mat-sort-header>
+                            <strong>Name</strong>
+                        </th>
+                        <td class="table-data-cell" fxFlex="20" *matCellDef="let element" mat-cell>{{element.name}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="contactName">
+                        <th class="table-header-cell" fxFlex="20" *matHeaderCellDef mat-header-cell mat-sort-header>
+                            <strong>Contact Name</strong>
+                        </th>
+                        <td class="table-data-cell" fxFlex="20" *matCellDef="let element" mat-cell>{{element.contactName}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="contactEmail">
+                        <th class="table-header-cell" fxFlex="25" *matHeaderCellDef mat-header-cell mat-sort-header>
+                            <strong>Contact Email</strong>
+                        </th>
+                        <td class="table-data-cell" fxFlex="25" *matCellDef="let element" mat-cell>{{element.contactEmail}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="contactPhone">
+                        <th class="table-header-cell" fxFlex="20" *matHeaderCellDef mat-header-cell mat-sort-header>
+                            <strong>Contact Phone Number</strong>
+                        </th>
+                        <td class="table-data-cell" fxFlex="20" *matCellDef="let element" mat-cell>{{element.contactPhone}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="editCustomer">
+                        <th class="table-header-cell" fxFlex="5" *matHeaderCellDef mat-header-cell ></th>
+                        <td class="table-data-cell" fxFlex="5" *matCellDef="let element" mat-cell>
+                            <mat-icon class="pencil-icon" (click)="openEditCustomerModalWindow(element.id)">edit</mat-icon>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="deleteCustomer">
+                        <th class="table-header-cell" fxFlex="5" *matHeaderCellDef mat-header-cell ></th>
+                        <td class="table-data-cell" fxFlex="5" *matCellDef="let element" mat-cell>
+                            <mat-icon class="pencil-icon" (click)="deleteCustomerRequest(element.id)">delete</mat-icon>
+                        </td>
+                    </ng-container>
+
+                    <mat-header-row
+                        class="table-header-row"
+                        fxLayoutAlign="start center"
+                        *matHeaderRowDef="displayedColumns; sticky: true">
+                    </mat-header-row>
+                    <mat-row
+                        class="table-data-row"
+                        fxLayoutAlign="start center"
+                        *matRowDef="let row; columns: displayedColumns">
+                    </mat-row>
+                </mat-table>
+
+                <mat-paginator
+                    [pageSizeOptions]="[10, 20, 50]"
+                    [length]="dataSource.filteredData.length"
+                    showFirstLastButtons>
+                </mat-paginator>
+            </div>
+        </div>
+    </div>
+</div>

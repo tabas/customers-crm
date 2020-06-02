@@ -1,0 +1,9 @@
+<h1 matDialogTitle>Add New Customer</h1>
+
+<div mat-dialog-content class="customer-form-container">
+    <app-customer-form
+        [dmsCustomer]="data.customer"
+        [dmsPrimaryButtonLabel]="'Create'"
+        (dmsOnPrimaryAction)="onCustomerCreate($event)">
+    </app-customer-form>
+</div>

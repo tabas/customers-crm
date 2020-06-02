@@ -1,0 +1,47 @@
+<form class="customer-form" autocomplete="off" name="customerForm" [formGroup]="customerForm" fxLayout="column">
+    <div class="row-container" fxLayout="row">
+        <mat-form-field appearance="outline" class="full-width form-control" fxFlex="50">
+            <mat-icon matPrefix>domain</mat-icon>
+            <mat-label>Customer Name* &nbsp;&nbsp;</mat-label>
+            <input matInput placeholder="Customer name" formControlName="name" appUniqueCustomerNameValidator>
+            <mat-error *ngIf="customerForm.controls['name'].invalid">{{getErrorMessage(customerForm.controls['name'])}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width form-control pl-12" fxFlex="50">
+            <mat-label>Contact Name* &nbsp;&nbsp;</mat-label>
+            <mat-icon matPrefix>person</mat-icon>
+            <input matInput placeholder="Contact Name" formControlName="contactName">
+            <mat-error *ngIf="customerForm.controls['contactName'].invalid">{{getErrorMessage(customerForm.controls['contactName'])}}</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="row-container" fxLayout="row">
+        <mat-form-field appearance="outline" class="full-width form-control" fxFlex="50">
+            <mat-icon matPrefix>contact_mail</mat-icon>
+            <mat-label>Contact Email* &nbsp;&nbsp;</mat-label>
+            <input matInput placeholder="Contact Email" formControlName="contactEmail">
+            <mat-error *ngIf="customerForm.controls['contactEmail'].invalid">{{getErrorMessage(customerForm.controls['contactEmail'])}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width form-control pl-12" fxFlex="50">
+            <mat-label>Contact Phone Number* &nbsp;&nbsp;</mat-label>
+            <mat-icon matPrefix>contact_phone</mat-icon>
+            <input matInput placeholder="Contact Phone Number" formControlName="contactPhone">
+            <mat-error *ngIf="customerForm.controls['contactPhone'].invalid">{{getErrorMessage(customerForm.controls['contactPhone'])}}</mat-error>
+        </mat-form-field>
+    </div>
+</form>
+
+<div class="form-actions-container">
+    <button type="button" mat-button mat-dialog-close>Cancel</button>
+    <button
+        type="button"
+        class="ml-12"
+        mat-raised-button
+        mat-dialog-close
+        color="primary"
+        [disabled]="customerForm.invalid"
+        (click)="onPrimaryAction()">
+        {{dmsPrimaryButtonLabel || 'Save'}}
+    </button>
+</div>

@@ -1,0 +1,26 @@
+.customers-page {
+  .center {
+    padding: 0;
+
+    .content-card {
+      .content {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 20px;
+
+        .customers-header-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .customers-table {
+          .pencil-icon {
+            font-size: 20px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

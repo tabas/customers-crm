@@ -1,0 +1,10 @@
+[*]
+charset=utf-8
+end_of_line=lf
+insert_final_newline=false
+indent_style=space
+
+trim_trailing_whitespace=true
+insert_final_newline=true
+max_line_length=100
+quote_type=single

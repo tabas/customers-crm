@@ -1,0 +1,28 @@
+@mixin error-403-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    error-403 {
+
+        #error-403 {
+
+            .content {
+
+                .message {
+                    color: map-get($foreground, secondary-text);
+                }
+
+                .search {
+                    background: map-get($background, card);
+                    border-color: map-get($foreground, divider);
+
+                    input {
+                        background: map-get($background, card);
+                        color: map-get($foreground, text);
+                    }
+                }
+            }
+        }
+    }
+}

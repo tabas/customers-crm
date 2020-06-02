@@ -1,0 +1,162 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Custom color maps for Fuse
+// -----------------------------------------------------------------------------------------------------
+$fuse-white: (
+    500: white,
+    contrast: (
+        500: $dark-primary-text
+    )
+);
+
+$fuse-black: (
+    500: black,
+    contrast: (
+        500: $light-primary-text
+    )
+);
+
+$fuse-navy: (
+    50: #ececee,
+    100: #c5c6cb,
+    200: #9ea1a9,
+    300: #7d818c,
+    400: #5c616f,
+    500: #3c4252,
+    600: #353a48,
+    700: #2d323e,
+    800: #262933,
+    900: #1e2129,
+    A100: #c5c6cb,
+    A200: #9ea1a9,
+    A400: #5c616f,
+    A700: #2d323e,
+    contrast: (
+        50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $light-primary-text,
+        400: $light-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $light-primary-text,
+        A400: $light-primary-text,
+        A700: $light-primary-text
+    )
+);
+
+// Generate Fuse color classes for custom palettes
+$custom_palettes: (
+    fuse-white: $fuse-white,
+    fuse-black: $fuse-black,
+    fuse-navy: $fuse-navy
+);
+
+@include fuse-color-classes($custom_palettes);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Typography
+// -----------------------------------------------------------------------------------------------------
+
+// Angular Material typography
+$typography: mat-typography-config(
+    $font-family: 'Muli, Helvetica Neue, Arial, sans-serif',
+    $title: mat-typography-level(20px, 32px, 600),
+    $body-2: mat-typography-level(14px, 24px, 600),
+    $button: mat-typography-level(14px, 14px, 600),
+    $input: mat-typography-level(16px, 1.125, 400)
+);
+
+// Setup the typography
+@include angular-material-typography($typography);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Component theming
+// -----------------------------------------------------------------------------------------------------
+
+// Import app and page component themes here to enable theming for them
+@import 'src/app/layout/components/toolbar/toolbar.theme';
+
+// Define a mixin for easier access
+@mixin components-theme($theme) {
+    // Layout components
+    @include toolbar-theme($theme);
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define a orange light theme
+// -----------------------------------------------------------------------------------------------------
+$mat-orange: (
+    (
+        50: #fff3e0,
+        100: #ffe0b2,
+        200: #ffcc80,
+        400: #ffa726,
+        500: #ff9800,
+        600: #fb8c00,
+        300: #ffb74d,
+        700: #f57c00,
+        800: #ef6c00,
+        900: #e65100,
+        A100: #ffd180,
+        A200: #ffab40,
+        A400: #ff9100,
+        A700: #ff6d00,
+        contrast: (
+            50: rgba(black, 0.87),
+            100: rgba(black, 0.87),
+            200: rgba(black, 0.87),
+            300: rgba(black, 0.87),
+            400: rgba(black, 0.87),
+            500: white,
+            600: white,
+            700: white,
+            800: rgba(white, 0.87),
+            900: rgba(white, 0.87),
+            A100: rgba(black, 0.87),
+            A200: rgba(black, 0.87),
+            A400: rgba(black, 0.87),
+            A700: rgba(black, 0.87)
+        )
+    )
+);
+
+$orange-light-theme-primary-palette: mat-palette($mat-orange);
+$orange-light-theme-accent-palette: mat-palette($mat-orange, 600, 400, 700);
+$orange-light-theme-warn-palette: mat-palette($mat-red);
+
+$blue-light-theme-primary-palette: mat-palette($mat-light-blue);
+$blue-light-theme-accent-palette: mat-palette($mat-blue);
+$blue-light-theme-warn-palette: mat-palette($mat-red);
+
+// Create the Material theme object
+$orange-light-theme: mat-light-theme(
+                $blue-light-theme-primary-palette,
+                $blue-light-theme-accent-palette,
+                $blue-light-theme-warn-palette
+);
+
+// Add ".theme-orange-light" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-orange-light {
+    // Generate the Angular Material theme
+    @include angular-material-theme($orange-light-theme);
+
+    // Apply the theme to the Fuse Core
+    @include fuse-core-theme($orange-light-theme);
+
+    // Apply the theme to the user components
+    @include components-theme($orange-light-theme);
+
+    // Generate Fuse color classes for primary, accent and warn colors
+    $palettes: (
+        primary: $blue-light-theme-primary-palette,
+        accent: $blue-light-theme-accent-palette,
+        warn: $blue-light-theme-warn-palette
+    );
+
+    @include fuse-color-classes($palettes);
+}
